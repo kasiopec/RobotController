@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">RobotController</string>
+    <string name="textX">X:</string>
+    <string name="textY">Y:</string>
+    <string name="textSeparator">x</string>
+    <string name="textSize">Enter robot room size down below(ex. 5x5)</string>
+    <string name="textStart">Enter robot starting coordinates (X,Y)</string>
+    <string name="textSide">Enter which side is robot looking at (N,E,S,W)</string>
+    <string name="textController">Enter robot path string (ex. LFFRFRFRFF)</string>
+    <string name="btnStart">Start</string>
+    <string name="btnExOne">Example 1</string>
+    <string name="btnExTwo">Example 2</string>
+    <string name="textTry">Or you can try out predefined route</string>
+</resources>
