@@ -36,18 +36,11 @@ class MainActivity : AppCompatActivity() {
 
         //launching our robot
         btnStart.setOnClickListener{
+
             // Side at which robot looks at
             val side = editTextSide.text.toString().toUpperCase()
-            //starting position of the robot X Y coords
-            val startX = Integer.parseInt(editTextStartX.text.toString())
-            val startY = Integer.parseInt(editTextStartY.text.toString())
             //Path and actions string we enter for the robot
             val path = editTextPath.text.toString().toUpperCase()
-            //Setting size of the room, so robot can't go outside
-            val roomMaxX = Integer.parseInt(editTextRoomX.text.toString())
-            val roomMaxY = Integer.parseInt(editTextRoomY.text.toString())
-
-
             //Patterns to check for wrong letters in side editText
             val pattern : Pattern = Pattern.compile("[^ENSW]")
             //Pattern for path command
@@ -62,7 +55,22 @@ class MainActivity : AppCompatActivity() {
             //checking for path string, so it only contains predefined movement letters
             }else if(mathcer2.find()){
                 Toast.makeText(this, "Wrong control command, check your path string", Toast.LENGTH_SHORT).show()
+            }else if (editTextRoomX.text.toString()=="" || editTextRoomY.text.toString()==""){
+                Toast.makeText(this, "Please enter size of the field", Toast.LENGTH_SHORT).show()
+            }else if (editTextStartX.text.toString() == "" || editTextStartY.text.toString()=="") {
+                Toast.makeText(this, "Please enter start position", Toast.LENGTH_SHORT).show()
+            }else if (editTextSide.text.toString() == "") {
+                Toast.makeText(this, "Please enter side robot looks at", Toast.LENGTH_SHORT).show()
+            }else if (editTextPath.text.toString()=="") {
+                Toast.makeText(this, "Please enter robot path string", Toast.LENGTH_SHORT).show()
             }else{
+                //starting position of the robot X Y coords
+                val startX = Integer.parseInt(editTextStartX.text.toString())
+                val startY = Integer.parseInt(editTextStartY.text.toString())
+                //Setting size of the room, so robot can't go outside
+                val roomMaxX = Integer.parseInt(editTextRoomX.text.toString())
+                val roomMaxY = Integer.parseInt(editTextRoomY.text.toString())
+
                 //creating robot with all the necessary data if check is OK
                 val myRobot = Robot(side, startX, startY, path, roomMaxX, roomMaxY)
                 //Showing results in a toast message
